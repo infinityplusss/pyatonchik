@@ -1,0 +1,157 @@
+# списки, строки и матрицы!
+import random
+my_list = [1,2,3,4,5]
+random_sorted_list = sorted(my_list, key = lambda A: random.random())
+# лямбда - анонимная функция, которая применяется к каждому элементу списка ( в данном случае применяется random.random() )
+print(*random_sorted_list)
+# перемешивание элементов списка в случайном порядке
+
+x = int(input())
+print([d for d in range(2,x) if x%d==0])
+# - все делители числа x (кроме тривиальных)
+print(all(x%d!=0 for d in range(2,int(x**0.5)+1)))
+# - проверка числа на простоту
+
+divs = [d for d in range(2, int(x**0.5)) if x % d == 0]
+divs += [x // d for d in divs]
+# - парные делители, которые идут после корня
+if int(x**0.5)**2 == x:
+    divs.append(int(x**0.5))
+divs.sort()
+print('делители:',divs,'\n','кол-во делителей:',len(divs))
+#  - нахождение всех делителей числа, включая корень из этого числа + сортировка по возрастанию
+
+ls = [[0]*5 for i in range(5)]
+# генератор матрицы из нулей 5x5
+for line in ls:
+    for elem in line:
+        print(elem, end = '\t')
+    print()
+
+A = "DSJFJHDFUWEHFWQERHDS"
+print(A, ''.join(sorted(A, reverse = True)))
+# сортирует строку в алфавитном порядке (обратном).
+
+mt = [list(map(int, input().split())) for i in range(3)]
+# ввод матрицы (в трех строках по три символа).
+sum = 0
+count1, count2 = 0,0
+for line in mt:
+    print("\t".join(map(str, line)))
+    # первый способ вывода матрицы.
+for line in mt:
+    for element in line:
+        print(element, end='\t')
+    print()
+    # второй способ вывода матрицы.
+for i in range(3):
+    for j in range(3):
+        sum += mt[i][j]
+        # сумма
+        if mt[i][j] % 2 == 0:
+            count1 += 1
+        else:
+            count2 += 1
+print(f'количество четных чисел: {count1}\nколичество нечетных чисел: {count2}\nсумма: {sum}')
+# вывод количества чет/нечет чисел и суммы.
+
+S = [[i for i in range(1,11)], [i for i in range(10,21)], [i for i in range(20,31)]]
+S = S[::-1] # со списками (как и с двумерными списками) можно работать как и со строками.
+for S_list in S:
+    for element in S_list:
+        if element < 10:
+            print(element, ' ', end = '\t')
+        else:
+            print(element, end = '\t')
+    print()
+# мини календарь (перевернутый).
+
+A1 = list(map(int, input().split()))
+bin_A1 = [bin(element)[2:] for element in A1]
+print('.'.join(bin_A1))
+# если элементы типа int, то запись такая: print(' '.join(map(str, bin_A1)))
+# перевод в двоичную систему и разделение на точки (типа айпишника).
+
+def matrix(counti, countj):
+    # ввод матрицы.
+
+    matrix_list = []
+    # задание пустой матрицы (списка).
+    for i in range(counti):
+        line = []
+        # задание строки (всего в матрице counti строк по countj элементов).
+        for j in range(countj):
+            line_value = int(input(f'введите элемент [{i}][{j}]: '))
+            line.append(line_value)
+            # ввод и добавление элементов в строку.
+        matrix_list.append(line)
+        # добавление строки в матрицу (в список).
+
+    # вывод матрицы.
+
+    for line in matrix_list:
+        for element in line:
+            print(element, end = '\t')
+        print()
+matrix(3,3)
+
+matrix1 = [[i for i in [1,2,3]] for j in range(3)]
+for element in matrix1:
+    print(*element, sep = '\t')
+# мини матрица
+
+from random import randint
+random_list = [randint(1,9) for i in range(10)]
+# в randint(a,b) указывается начало(a) и конец(b)
+print(random_list)
+# выводит список случайных чисел от 1 до 9.
+
+list1, list2 = [int(i) for i in range(50) if i % 3 == 0], [int(i) for i in range(50) if i % 4 == 0]
+total_list = sorted(set(list1+list2))[::-1]
+print(total_list)
+# выводит все числа, делящиеся на 4, и все числа, делящиеся на 3, в одну строку с сортировкой по убыванию.
+
+aa = [123,325,765,1236,734,42,59,124,7,315,7,34,54,234,51]
+new_aa = [i//2 for i in sorted(aa, reverse = True)]
+print(*new_aa)
+#сортировка по убыванию и деление нацело на 2 всех элементов
+
+F = [1,23,123,1,2,5,6,34,1,2,32,12,4,436,54,7]
+print(sorted(set(F))[::-1])
+# сортировка элементов по убыванию с удалением всех повторений.
+
+first_list, second_list = [1,2,3,4,5], [1,2,3,4,5]
+first_list[1:2], second_list[1] = [2,2,2], [2,2,2]
+print(first_list,second_list, sep = '\n')
+# срез заменяется строкой, а элемент списком.
+
+A = [i for i in (1,2,3,'one','two','three')]
+print(*A, sep = ', ', end = '.\n')
+
+s0 = 'kakish pukish srakish'.split()
+print(*s0, sep = ', ', end = '.\n')
+# замена пробелов на запятые в строке и добавление точки в конче).
+
+s = list(map(int, input().split()))
+# - выводим список из заданных через пробел строк.
+s1 = [int(input()) for i in range(10)]
+# - выводим список из заданных через перевод строки строк (10 штук).
+s2 = " ".join(map(str, sorted(map(int, input().split()))))
+# - выводим сортированный список из заданной через пробел строки (10 штук).
+print(s, "\t", s1, "\t", s2)
+
+from random import *
+n = int(input("Введите количество случайных чисел: "))
+a, b = list(map(int, input("Введите диапазон случайных чисел (через пробел): ").split()))
+randomList = [randint(a, b) for i in range(n)]
+separator = input("Введите разделитель между числами: ")
+if separator == "n":
+    print(*randomList, sep="\n")
+elif separator == "t":
+    print(*randomList, sep="\t")
+else:
+    print(*randomList, sep = separator)
+
+A = [n for n in range(1, 101) if n%2!=0]
+print(A)
+# - выводит все четные числа от 1 до 100.
