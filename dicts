@@ -69,5 +69,16 @@ studentName = (input("Введите ФИО студента: ") for i in range(
 studentID = set([randint(100,1000) for i in range(10)])
 # создаем множество из 10 неповторяющихся трехзначных номеров студенческого билета.
 studentDict = dict(zip(studentID, studentName))
+
+dict0 = {i: i ** 2 for i in range(1, 10)}
+print(dict0)
+# генератор словарей.
+
+str = 'hello world, hello!'
+dict1 = {i: str.count(i) for i in str}
+print(dict1)
+# создаем словарь из пары: буква: кол-во буквы (в заданной строке).
+
+ 
 print(studentDict)
 # создаем словарь из наших элементов и выводим его.
