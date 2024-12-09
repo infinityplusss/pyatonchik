@@ -1,0 +1,72 @@
+# классы!
+class Empty:
+    pass
+# пустой класс, который ничего не делает, pass - заглушка.
+
+class Dog:
+    """получает имя собаки, ее возраст и позволяет ей лаять"""
+    def __init__(self, name, age):
+    # метод инициализации, self задается автоматически, как ссылка на наш объект.
+        self.name = name
+        self.age = age
+    def bark(self):
+        print(f'{self.name} says Woof!')
+    # собака гавкает.
+    def age(self):
+        return self.age
+myDog = Dog(name="John", age=8)
+# задаем атрибуты нашего класса.
+print(myDog.name, myDog.age, sep=', ')
+myDog.bark()
+
+class House():
+    """строительство дома"""
+    def __init__(self, street, number, index, time, year):
+        self.street = street
+        self.number = number
+        self.index = index
+        self.time = time
+        self.year = year
+        # по умолчанию нашему дому 0 лет.
+    def HouseBuiling(self):
+        """строительство дома"""
+        print(f'The house at the {self.street} {self.number}{self.index} will be built in {self.time} days.')
+    def deletingBuilding(self):
+        """снос дома"""
+        print(f'The house at the {self.street} {self.number}{self.index} will be removed in {self.time//10} days.')
+    def houseAge(self):
+        """определение возраста дома"""
+        currentYear = 2024
+        return currentYear - self.year
+
+newHouse = House(street="Lomonosova", number=10, index="v", time=20, year=2012)
+print(newHouse.street)
+# обращение к улице нашего объекта класса House.
+newHouse.HouseBuiling()
+# строим новый дом.
+print(f'This house is {newHouse.houseAge()} years old.')
+oldHouse = House(street="Lomonosova", number=10, index="b", time=20, year=2007)
+oldHouse.deletingBuilding()
+# сносим старый дом.
+print(f'This house is {oldHouse.houseAge()} years old.')
+
+class ExpenciveHouse(House):
+    """наследование класса House - дорогие дома"""
+    def __init__(self, street, number, index, time, year, luxuryFeatures):
+        super().__init__(street, number, index, time, year)
+        self.luxuryFeatures = luxuryFeatures
+        # задаем новый атрибут - дорогие услуги.
+    def showLuxuryFeatures(self):
+        if self.luxuryFeatures:
+            features = ', '.join(self.luxuryFeatures)
+            print(f"This house has such luxury features as: {features}.")
+            # если дорогие услуги есть, объединяем их в строку, разделенную запятой
+        else:
+            print("This house hasn't got any luxury features.")
+
+
+pentHouse = ExpenciveHouse("Lomonosova", 9, 'X', 20, 2022,
+                           luxuryFeatures=["25 bathrooms", "8 bedrooms", "3 kitchens", "a personal chef"])
+pentHouse.HouseBuiling()
+print(f'This house is {pentHouse.houseAge()} years old.')
+pentHouse.showLuxuryFeatures()
