@@ -1,0 +1,69 @@
+# множества!
+emptySet = set()
+print(len(set()))
+# задание пустого множества только через set(), {} задают пустой словарь!
+
+randomList = [1, 'word', 2.5, False, 1, True]
+listToSet = set(randomList)
+print(listToSet)
+# все элементы множества уникальны и расположены хаотично.
+# True преобразуется в 1, поэтому не выводится, как и вторая единица.
+
+randomSet = {1,2,3}
+randomSet.add(4)
+# добавление только одного элемента в множество.
+randomSet.update([5,6,7], {7,8}, (9, 10), 'kaka')
+# добавление любого итерируемого объекта (или объектов) в множество.
+print(randomSet)
+
+randomSet1 = {1,'popa', 2.5, 35, 10}
+randomSet1.discard(1)
+randomSet1.discard(34)
+randomSet1.remove('popa')
+# удаление элементов с помощью discard() и remove()
+# если удалить элемент, которого нет в множестве, ничего не произойдет, нулевое действие.
+# но если удалить пустой элемент с помощью remove(), программа аварийно завершится.
+print(randomSet1)
+
+randomSet2 = {4,5,6,7,8,9}
+sortedSet = sorted(randomSet2)
+sortedSet.pop()
+# метод pop() в данном примере удаляет последний элемент, т.к у нас сортированное множество.
+# в несортированном множестве pop() удаляет произвольный элемент.
+# если множество пустое, при попытке вызвать pop() программа аварийно завершится.
+print(sortedSet)
+
+randomSet3 = {12,23,34}
+randomSet3.clear()
+# очищение множества, эквивалентно записи randomSet3 = set().
+print(randomSet3)
+
+randomSet_1 = {6,7,8,9,10,11,12}
+randomSet_2 = {1,2,3,4,5,6,7,8,9}
+print(9 in randomSet_1)
+# выведет True
+print(randomSet_1.union(randomSet_2))
+# объединение множеств.
+print(randomSet_1.intersection(randomSet_2))
+# пересечение множеств.
+print(randomSet_1.difference(randomSet_2))
+# разность множеств (возвращает элементы множества randomSet_1, которых нет у randomSet_2).
+print(randomSet_1.symmetric_difference(randomSet_2))
+# вернет только уникальные элементы множеств (обратное пересечение).
+print(randomSet_1.issubset(randomSet_2))
+# False, т.к. не является подмножеством.
+print(randomSet_1.issuperset(randomSet_2))
+# False, т.к. не является надмножеством.
+
+print(randomSet_1.union(randomSet_2) == randomSet_2.union(randomSet_1)) # True
+print(randomSet_1.intersection(randomSet_2) == randomSet_2.intersection(randomSet_1)) # True
+print(randomSet_1.symmetric_difference(randomSet_2) == randomSet_2.symmetric_difference(randomSet_1)) # True
+print(randomSet_1.difference(randomSet_2) == randomSet_2.difference(randomSet_1)) # False
+# 3 метода симметричны
+
+tupleSet = {(1,2,3), (4,5,6), (7,8,9)}
+for tuple in tupleSet:
+    for element in tuple:
+        print(element, end = '\t')
+    print()
+# множество кортежей и их перебор.
