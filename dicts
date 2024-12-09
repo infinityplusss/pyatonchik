@@ -1,0 +1,64 @@
+# словари!
+capitals = dict()
+capitals['Russia'] = 'Moscow'
+capitals['Germany'] = 'Berlin'
+capitals['France'] = 'Paris'
+# задание значений элементов словаря.
+# ключи(уникальны) - страны, значения - столицы.
+print('What country do u live in? ')
+userCountry = input()
+while userCountry not in capitals:
+# пока страны нет в словаре, мы просим пользователя ввести ее столицу, чтобы занести ее в словарь и затем распечатать.
+    print('What is your capital named?')
+    userCapital = input()
+    capitals[userCountry] = userCapital
+print('Your county capital is:', capitals[userCountry])
+
+# способы задания словаря
+randomDict1 = dict([('a', 1), ('b',2), ('c',3)])
+randomDict2 = dict(a = 1, b = 2, c = 3)
+randomDict3 = dict(zip(['a','b','c'], [1,2,3]))
+
+randomDict = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+
+del randomDict['e']
+randomDict.pop('d', None)
+# удаляем последние два элемента.
+# если введем несуществующий ключ - программа завершится аварийно.
+# None позволяет обойти завершение программы - вместо этого она возвратит нам значение None (или любое другое, которое мы напишем).
+
+if 'f' in randomDict:
+    del randomDict['f']
+
+try:
+    del randomDict['f']
+except KeyError:
+    pass
+# 2 способа удалить элемент безопасно и без ошибок при его отсутствии.
+
+for key in randomDict:
+# обращение к ключам словаря.
+    print(key, end = ", ")
+
+print(randomDict.get("a"), randomDict.get("b"), randomDict.get("c"), randomDict.get("d"), sep = ", ")
+# с помощью get() достаем значение ключа (возвращает None, если ключа нет в словаре).
+
+print(randomDict.get('f', "такого элемента нет!"))
+# возвратит второй параметр при отсутствии ключа.
+
+for key in randomDict:
+    print(key, randomDict[key], sep = ":", end = " ")
+
+print()
+for key, val in randomDict.items():
+# items возвращает все кортежи (ключ, значение).
+    print(key, val, sep = ":", end = " ")
+# еще два способа обращения к ключам и их значениям.
+
+print()
+print(*(randomDict.keys()), *(randomDict.values()))
+# с помощью keys достаем ключи, values - для значений (+распаковываем).
+
+SUFFIXES = {1000: ['KB', 'MB', 'GB'], 1024: ['KiB', 'MiB', 'GiB']}
+print(SUFFIXES[1024][2])
+# выведет GiB.
