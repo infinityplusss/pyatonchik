@@ -62,3 +62,12 @@ print(*(randomDict.keys()), *(randomDict.values()))
 SUFFIXES = {1000: ['KB', 'MB', 'GB'], 1024: ['KiB', 'MiB', 'GiB']}
 print(SUFFIXES[1024][2])
 # выведет GiB.
+
+from random import randint
+studentName = (input("Введите ФИО студента: ") for i in range(10))
+# задаем имя студента.
+studentID = set([randint(100,1000) for i in range(10)])
+# создаем множество из 10 неповторяющихся трехзначных номеров студенческого билета.
+studentDict = dict(zip(studentID, studentName))
+print(studentDict)
+# создаем словарь из наших элементов и выводим его.
