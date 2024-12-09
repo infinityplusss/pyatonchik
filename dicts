@@ -20,6 +20,7 @@ randomDict2 = dict(a = 1, b = 2, c = 3)
 randomDict3 = dict(zip(['a','b','c'], [1,2,3]))
 randomDict4 = dict.fromkeys(['a','b','c'], 12)
 # присваивание 12 всем ключам словаря.
+
 randomDict = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
 del randomDict['e']
 randomDict.pop('d', None)
@@ -48,8 +49,8 @@ print(randomDict.get('f', "такого элемента нет!"))
 
 for key in randomDict:
     print(key, randomDict[key], sep = ":", end = " ")
-
 print()
+
 for key, val in randomDict.items():
 # items возвращает все кортежи (ключ, значение).
     print(key, val, sep = ":", end = " ")
@@ -58,6 +59,31 @@ for key, val in randomDict.items():
 print()
 print(*(randomDict.keys()), *(randomDict.values()))
 # с помощью keys достаем ключи, values - для значений (+распаковываем).
+
+sl = {
+    'kai angel': "розовое вино 3",
+    '9mice': 'играющий КАРТОН',
+    'toxis': 'ЗЛОЙ ЖОРА'
+}
+sl1 = {
+    'DImas': 'гучи генг',
+    'pepil nahudi': 'БУРГЕР'
+}
+sl.update(sl1)
+print(sl)
+# обновляем словарь sl, добавляя в него кортежи ключ:значение из sl1.
+
+keys = list(sl.keys())
+print(*keys, sep=', ')
+values = list(sl.values())
+print(*values, sep=', ')
+items = list(sl.items())
+print(*items, sep=', ')
+# достаем ключи и значения (+пары) и выводим их в списки.
+
+print(dict(sorted(sl.items())))
+# сортированный словарь (по ключам)
+# если не указывать items - выведет только ключи.
 
 SUFFIXES = {1000: ['KB', 'MB', 'GB'], 1024: ['KiB', 'MiB', 'GiB']}
 print(SUFFIXES[1024][2])
@@ -80,3 +106,75 @@ str = 'hello world, hello!'
 dict1 = {i: str.count(i) for i in str}
 print(dict1)
 # создаем словарь из пары: буква: кол-во буквы (в заданной строке).
+
+sl = {
+    'name': 'Egr',
+    'age': 17,
+    'city': 'Chmolensk'
+}
+lastItems = sl.popitem()
+print(sl, lastItems, sep="\n")
+# popitem() удаляет и возвращает последнюю пару ключ-значение.
+
+
+newSl = sl.copy()
+newSl['city'] = 'Chmolensk'
+print(newSl, sl, sep='\n')
+# создаем копию словаря и добавляем в него новый элемент, который не добавится в исходный.
+
+print(sl.setdefault('name'))
+# возвращает значение ключа.
+print(sl.setdefault('education', 'None'))
+# ищет ключ education, и если его нет, добавляет его в словарь со значением, равным второму параметру
+print(sl)
+
+peopleDict = {
+    'egor': {
+        'phone number': 999,
+        'city': 'St.Petersburg',
+        'age': 17
+    },
+    'sofa': {
+        'phone number': 666,
+        'city': 'Moscow',
+        'age': 18
+    },
+    'John': {
+        'phone number': 'Unknown',
+        'city': 'Moscow',
+        'age': 8
+    }
+}
+
+SofaAge = peopleDict['sofa']['age']
+print(SofaAge)
+# задание вложенных словарей и обращение к их элементам.
+
+for person in peopleDict.keys():
+    for key, value in peopleDict[person].items():
+        print(key, value)
+# обращаемся к внутренним элементам.
+
+engWords = ['apple', 'orange', 'kiwi', 'melon', 'watermelon', 'pear', 'banana', 'tangerine', 'grape', 'lime']
+rusWords = ['яблоко', 'апельсин', 'киви', 'дыня', 'арбуз', 'груша', 'банан', 'мандарин', 'виноград', 'лайм']
+for i in range(5):
+    userInput = input("Введите слово на английском, а также его перевод через пробел: ").split()
+    engWords.append(userInput[0])
+    rusWords.append(userInput[1])
+RusEngDict = dict(zip(engWords, rusWords))
+print(RusEngDict)
+# зад.1
+
+print()
+lessThanSix, moreThanFive = [], []
+totalWords = engWords + rusWords
+for word in totalWords:
+    if len(word) > 5:
+        moreThanFive.append(word)
+    elif len(word) < 6:
+        lessThanSix.append(word)
+print('Длина больше 5:')
+print(*moreThanFive, sep=', ')
+print('Длина меньше 6:')
+print(*lessThanSix, sep=', ')
+# зад.2
