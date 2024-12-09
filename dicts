@@ -18,9 +18,9 @@ print('Your county capital is:', capitals[userCountry])
 randomDict1 = dict([('a', 1), ('b',2), ('c',3)])
 randomDict2 = dict(a = 1, b = 2, c = 3)
 randomDict3 = dict(zip(['a','b','c'], [1,2,3]))
-
+randomDict4 = dict.fromkeys(['a','b','c'], 12)
+# присваивание 12 всем ключам словаря.
 randomDict = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
-
 del randomDict['e']
 randomDict.pop('d', None)
 # удаляем последние два элемента.
