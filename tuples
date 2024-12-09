@@ -1,0 +1,45 @@
+# кортежи!
+s = [123, 'asdq', 2.55, [1,3], 123]
+s = tuple(s)
+# перевод списка в кортеж!
+
+sCount, sIndex_1, sIndex_2 = s.count(123), s.index(123), s.index(123, 1)
+print(sCount, sIndex_1, sIndex_2, sep = '\t')
+# count - кол-во, index - индекс элемента по его значению.
+# внимание! аварийно завершает программу, если такого значения нет!
+
+if [1,2] in s:
+    print(s.index([1,2]))
+else:
+    print("there's no such element!")
+# пример без аварийного завершения.
+
+print(s[-3::-1])
+# срезы также работают - создается новый кортеж.
+
+print(*[i for i in s])
+print(*[s[i] for i in range(len(s))])
+# 2 способа вывода элементов кортежа (аналогично списку).
+
+def TrueOrFalse(anything):
+    if anything: # проверка на истинность
+        return True
+    else:
+        return False
+print(TrueOrFalse(()))
+# пустой кортеж - ложь (False).
+
+print(TrueOrFalse((False)))
+# значение в скобках, не имеющее запятую не является кортежем (False).
+
+print(TrueOrFalse((False,)))
+# кортеж, состоящий из одного любого объекта - истина (True).
+
+# присваивание нескольких значений.
+randomTuple = (1,[4,5], 'john')
+firstElement, secondElement, thirdElement = randomTuple
+print(firstElement, secondElement, thirdElement, sep = '  ')
+
+(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday) = range(1,8)
+print(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+# 1 2 3 4 5 6 7
