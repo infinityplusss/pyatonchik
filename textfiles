@@ -1,0 +1,42 @@
+# текстовые файлы!
+input = open('some_file.txt', 'r')
+# записываем ссылку на текстовый файл в input в режиме read.
+print(input.read())
+# выводим то, что находится в файле.
+input.close()
+# закрываем файл.
+print()
+
+file = open('some_file.txt').readline()
+# выводит одну строчку файла (считывает до \n, но только не до конца файла).
+file = file.strip()
+# на случай, если файл состоит из одной строки.
+print(file)
+print()
+
+file = open('some_file.txt').readlines()
+# выводим все строчки файла.
+print(file)
+# передает нам список строк.
+for line in file:
+    print(line, end="")
+print()
+
+with open('some_file.txt', 'w') as file:
+# файл автоматически закроется после выхода из блока with.
+    file.write("hi, it's me, egro negro!\n")
+    file.write("and i hate to tell you, that...\n")
+    # записываем строки в файл по одной.
+with open('some_file.txt', 'a') as file:
+    file.write("that, you're scammed!\n")
+
+file = open('some_file.txt', 'a')
+print("nope, that't a joke!", file=file)
+# добавляем в наш файл еще одну строку с помощью print.
+
+output = open('output.txt', 'w')
+with open('input.txt') as file:
+    file = file.read()
+    output.write(file)
+output.close()
+# выводит содержимое input.txt в output.txt
