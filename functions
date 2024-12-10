@@ -1,0 +1,97 @@
+# замыкания!
+def out(list):
+    def wrapper():
+        return list[0] + list[1]
+    return wrapper
+    # замыкание функции
+
+sp = [1,2,3,4]
+clos = out(sp)
+sp[0] = 5
+print(clos())
+# с помощью скобки мы передаем функции не копии, а сами параметры
+# поэтому при изменении sp мы видим измененный результат функции.
+
+# декораторы!
+def myDecorator(func1, func2):
+# декоратор.
+    def wrapper():
+        # вложенная функция!!
+        print('before: ')
+        func1()
+        print('after: ')
+        func2()
+    return wrapper
+    # замыкание функции.
+
+def firstFunction():
+    print('some function!')
+def secondFunction():
+    print('more function!')
+
+my = myDecorator(firstFunction, secondFunction)
+print(my())
+# первый способ декорирования.
+
+def myDecorator(func):
+    def wrapper(a):
+        print('before:')
+        print(func(a))
+        print('after:')
+        print(func(a) * 2)
+    return wrapper
+
+@myDecorator
+def myFunc(a):
+    return a ** 2
+myFunc(7)
+# второй способ декорирования.
+
+def newFunc(func):
+    def wrapper():
+        for word in func():
+            print(word.upper() + '!', end=' ')
+        return "\n20 слов ИНФОРМАТИКА!\n"
+    return wrapper
+
+@newFunc
+def function():
+    list = ['Информатика' for i in range(20)]
+    return list
+print(function())
+# пример работы с декоратором, преобразует 20 слов информатика в ИНФОРМАТИКА!
+
+def dec1(func):
+    def wrapper():
+        return func().upper() + '!'
+    return wrapper
+def dec2(func):
+    def wrapper():
+        return func() + '?'
+    return wrapper
+
+@dec1
+@dec2
+def myfunc():
+    return 'kakish'
+print(myfunc())
+# 2 декоратора, применяются снизу вверх!
+
+from time import *
+
+def dec(func):
+    def wrapper(userInt):
+        begin = time()
+        function = func(userInt)
+        end = time()
+        print(f'Время выполнения функции: {end - begin}')
+        return function
+    return wrapper
+@dec
+def fuct(userInt):
+    for i in range(1, userInt):
+        userInt *= i
+    return userInt
+userInt = int(input('Введите небольшое положительное число: '))
+print(f'Результат функции: {fuct(userInt)}')
+# задачка на подсчет времени выполнения функции факториала.
