@@ -40,3 +40,31 @@ with open('input.txt') as file:
     output.write(file)
 output.close()
 # выводит содержимое input.txt в output.txt
+
+sp = [i for i in range(10)]
+sp1 = ['a', 'b', 'c', 'd']
+with open('pidr.txt', 'wt') as file:
+    print(file.name, file.mode, file.closed, sep=', ')
+    # выводим важную информацию о файле.
+
+    print("hi! how're you?", file=file, end='')
+    n = file.write("\ni'm good and u?\n")
+    # записываем 2 строчки в файл.
+
+    for num in sp:
+        file.write(str(num))
+    # write() принимает только один аргумент - строку.
+
+    print(file=file)
+    # перевод строки
+
+    print(*sp, end=' ', file=file)
+    # выводим список
+
+    print(file=file)
+    file.writelines(sp1)
+    # записывает целиком список в строчку в наш файл.
+
+print(n)
+# выводит кол-во байт, которые мы записали с помощью функции write().
+
