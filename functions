@@ -163,3 +163,17 @@ print(list(map(lambda num: num ** 2, nums)))
 from functools import *
 print(reduce(lambda a, b: a * b, nums, 666))
 # reduce позволяет вывести результат выполнения ламбда функции одним значением (начиная с числа 666).
+
+randomStr = 'sdkfjjdksj45345jkdkj83dj32d328d23jg293g'
+userList = list(randomStr)
+print(list(filter(lambda x: x in '0123456789', userList)))
+# 1 способ.
+numsInList = [num for num in userList if num in '0123456789']
+print(numsInList)
+# 2 способ.
+# зад.1
+
+randomList = [31,2,42,94,6,73,4,8,3,67]
+newList = list(map(lambda x: x * 2 if x % 2 == 0 else x * 3, randomList))
+print(newList)
+# зад.2
