@@ -68,3 +68,18 @@ with open('pidr.txt', 'wt') as file:
 print(n)
 # выводит кол-во байт, которые мы записали с помощью функции write().
 
+sp = [num for num in range(10)]
+with open('newfile.txt', 'w') as fl:
+    print(*sp, sep='\n', file=fl)
+
+with open('newfile.txt', 'r') as fl:
+    print(fl.read(5))
+    # считываем первые 5 символов (\n - тоже считается за символ)
+    print(fl.tell(), "- текущая позиция.")
+    fl.seek(15)
+    print(fl.tell(), "- текущая позиция.")
+    # узнаем и меняем текущую позицию в файле.
+
+    allLines = [line for line in fl.readlines()]
+    print(*allLines, sep='')
+    # считываем все строки (начиная с 15 позиции!) и выводим их.
