@@ -95,3 +95,71 @@ def fuct(userInt):
 userInt = int(input('Введите небольшое положительное число: '))
 print(f'Результат функции: {fuct(userInt)}')
 # задачка на подсчет времени выполнения функции факториала.
+
+# анонимные функции и важные функции (высшего порядка)!
+message = lambda: print('some message')
+message()
+# лямбда функция выполняет действие print.
+message = lambda n: n ** 3
+print(message(4))
+# лямбда функция возвращает куб числа n
+
+products = [
+    {
+        'Название': 'Молоко',
+        'Цена': 75,
+        'Кол-во': 20
+    },
+    {
+        'Название': 'Хлеб',
+        'Цена': 35,
+        'Кол-во': 45
+    },
+    {
+        'Название': 'Яйца',
+        'Цена': 200,
+        'Кол-во': 7
+    }
+]
+sortedProducts = sorted(products, key=lambda item: item['Кол-во'], reverse=True)
+print(sortedProducts)
+# сортировка товаров по количеству.
+
+matrix = [[1, 34], [1, 25], [34, 65], [22, 73], [42, 51]]
+print(sorted(matrix, key=lambda list: list[0]))
+# сортировка по первый числам списков.
+print(sorted(matrix, key=lambda list: list[-1]))
+# сортировка по вторым числам списков.
+print(sorted(matrix, key=lambda list: list[0] + list[-1]))
+# сортировка по сумме чисел списков.
+
+def func(num1):
+    return lambda num2: num2 * num1
+double = func(10)
+totalNum = double(5)
+print(totalNum)
+# использование lambda внутри функции.
+
+numbers = [2,1,3,6,78,32,67,12,94,15,875,24,741]
+
+res1 = list(filter(lambda x: x>20, numbers))
+print(*res1, sep=' ')
+
+res2 = [num for num in numbers if num > 20]
+print(*res2, sep=' ')
+# два способа вывести все элементы, большие чем 20.
+
+allNums = list(map(int, str(38383838)))
+sumNums = sum(map(int, str(38383838)))
+print(allNums, sumNums, sep='\n')
+# применяем str(), чтобы создать итерируемую строку, к каждому символу которой мы применяем метод int()
+# выводим строку в виде списка, а также выводим сумму цифр этой строки.
+
+nums = [1,2,3,4,5,6,7,8,9]
+
+print(list(map(lambda num: num ** 2, nums)))
+# выведет квадраты чисел списка nums.
+
+from functools import *
+print(reduce(lambda a, b: a * b, nums, 666))
+# reduce позволяет вывести результат выполнения ламбда функции одним значением (начиная с числа 666).
