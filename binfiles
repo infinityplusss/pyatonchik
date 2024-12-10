@@ -1,1 +1,25 @@
+with open('test.bin', 'wb') as f:
+    f.write(b'hello')
+    # записываем в bin файл hello.
 
+with open('test.bin', 'rb') as f:
+    print(f.read())
+    # считываем bin файл
+
+with open('Privet.bin', 'rb') as f:
+    print(f.read().decode())
+    # считываем русский текст из файла
+    # декодинг из класса bytes в строку.
+
+print('Привет!'.encode('utf-8'))
+# строка, закодированная в bytes.
+
+with open('img.png', 'rb') as imgFile:
+    res = imgFile.read()
+    print(res)
+    # выводит байтовое представление изображения.
+
+    with open('newImg.png', 'wb') as newImgFile:
+        newImgFile.write(res)
+        # записываем бинарное представление исходного изображения в новый файл
+        # получаем идентичное изображение с таким же бинарным набором.
