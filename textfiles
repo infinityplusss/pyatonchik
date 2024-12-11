@@ -83,3 +83,53 @@ with open('newfile.txt', 'r') as fl:
     allLines = [line for line in fl.readlines()]
     print(*allLines, sep='')
     # считываем все строки (начиная с 15 позиции!) и выводим их.
+
+import os
+
+print(os.path.exists('some_file.txt'))
+# проверяет, существует ли заданный файл.
+
+print(os.path.isfile('venv'))
+# проверяет, файл ли заданный параметр или нет.
+
+os.rename('test.txt', 'newTest.txt')
+# переименование файла test.txt на newTest.txt
+
+os.remove('newTest.txt')
+# удаляет выбранный файл.
+
+import shutil
+
+print(os.getcwd())
+# выводит путь к директории, в которой находится исполняемый файл.
+
+os.rmdir('new folder')
+# удаляем папку (только пустую).
+
+shutil.rmtree('new folder')
+# удаляем папку вместе с содержимым.
+
+os.mkdir('new folder')
+# создает новую папку в нашей директории.
+
+os.mkdir('C:/new folder1')
+# создаем новую папку по указанному пути
+# или ('C:\\new folder1'), как экранирование.
+
+print(os.listdir('ege'))
+# возвращает список из всех элементов указанной директории.
+
+os.mkdir('test')
+os.replace('text.txt', 'test/text.txt')
+# создаем директорию test и перемещаем в нее файл text.txt
+
+os.mkdir('new directory')
+print(os.listdir('.'))
+# выводит все элементы нашей директории.
+os.chdir('new directory')
+# меняем расположение нашей директории
+os.mkdir('new folder')
+# создаем новую папку уже в новой директории
+print(os.listdir('.'))
+os.chdir('C:\\Users\\Theeg\\PycharmProjects\\pythonProject')
+# возвращаемся в нашу исходную директорию.
