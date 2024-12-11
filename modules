@@ -17,9 +17,28 @@ print(math.sqrt.__doc__)
 # выводим документацию функции модуля.
 
 from random import *
+# не импортируются функции, начинающиеся с _.
 from math import sqrt as sq
 
 print(randint(0,10))
 print(int(sq(9)))
 # некоторые детали импортирования.
 
+# файл ceomodule.py
+def square(radius):
+    return (radius**2) * 3.14
+def per(radius):
+    return 2 * radius * 3.14
+
+# файл main.py  
+from ceomodule import square, per
+print(square(5))
+print(per(4))
+# импортируем созданный модуль.
+
+def hello():
+    print('hello')
+
+if __name__ == '__main__':
+    hello()
+# тестируем функцию в файле созданного модуля.
