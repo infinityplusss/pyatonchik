@@ -1,0 +1,25 @@
+# работа с модулями!
+import sys
+import math
+
+print(sys.builtin_module_names)
+# выводим на экран встроенные модули.
+
+help('modules')
+# выводим на экран все установленные модули.
+
+# pip install telegram-bot - пример установки новых модулей (через терминал).
+
+print(dir(math))
+# смотрим функции модуля.
+
+print(math.sqrt.__doc__)
+# выводим документацию функции модуля.
+
+from random import *
+from math import sqrt as sq
+
+print(randint(0,10))
+print(int(sq(9)))
+# некоторые детали импортирования.
+
